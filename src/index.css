@@ -1,5 +1,5 @@
 
-.buttonb { @apply bg-blue-500 px-3 py-1 text-center text-gray-50 rounded-lg text-lg font-bold}
+.buttonb { @apply bg-blue-500 px-3 py-2 text-center text-gray-50 rounded-lg text-lg font-bold}
 .button { @apply shadow-lg px-3 py-1 text-center text-gray-50 rounded-lg text-lg font-bold}
 .h1 {@apply text-2xl font-bold}
 .p {@apply font-semibold}
