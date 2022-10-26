@@ -6,6 +6,8 @@ import Home from "../PablicPage/Home";
 import Login from "../PablicPage/Login";
 import Main from "../PablicPage/Main";
 import Register from "../PablicPage/Register";
+import Chackout from "../PrivetRoutePage/Chackout";
+import PrivetRouter from "./PrivetRouter";
 
 export const router =createBrowserRouter([
     {
@@ -45,6 +47,12 @@ export const router =createBrowserRouter([
                 path:'/course/:id',
                 loader: ({params})=>fetch(`http://localhost:5000/allCorses/${params.id}`),
                 element:<Corse> </Corse>
+            },
+            {
+                path:'/course/chackout',
+                // loader: ({params})=>fetch(`http://localhost:5000/allCorses/${params.id}`),
+                element:<PrivetRouter><Chackout></Chackout></PrivetRouter>
+
             }
         ]
     },

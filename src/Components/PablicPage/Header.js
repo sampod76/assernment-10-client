@@ -25,19 +25,24 @@ const Header = () => {
 
     const handleSingOut = () => {
         logOut()
-        .then(result=>{
-            navigat('/login')
-        })
-     
+            .then(result => {
+                navigat('/login')
+            })
+
 
     }
     return (
-        <div className=' sticky top-1'>
+        <div className=' sticky top-1 blurImg'>
             <header className="p-2 dark:bg-gray-800 dark:text-gray-100">
                 <div className="container flex justify-between h-16 mx-auto">
                     <Link rel="noopener noreferrer" to='/' aria-label="Back to homepage" className="flex items-center p-2">
                         <img className='w-[60%] rounded-full' src='https://thumbs2.imgbox.com/82/db/FLFQNGrC_t.jpg' alt="" />
                     </Link>
+                    <div>
+                        <h1 className='text-purple-900 slide '>
+                            Programing School
+                        </h1>
+                    </div>
                     <ul className="items-stretch hidden space-x-3 md:flex">
                         <li className="flex">
                             <Link rel="noopener noreferrer" to='/home' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Home</Link>
@@ -47,7 +52,11 @@ const Header = () => {
                         </li>
                         {
                             user?.email ? <li className="flex">
-                                <Link onClick={handleSingOut} rel="noopener noreferrer" to='' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Sing Out</Link>
+                                <>
+                                    <Link onClick={handleSingOut} rel="noopener noreferrer" to='' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Sing Out</Link>
+                                    <Link onClick={handleSingOut} rel="noopener noreferrer" to='' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"><img src="" alt="" srcset="" /></Link>
+
+                                </>
                             </li> : <>
 
                                 <li className="flex">

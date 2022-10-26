@@ -10,8 +10,8 @@ const Main = () => {
     return (
         <div className='flex justify-between flex-col gap-3 '>
             <Header></Header>
-            <div className='flex justify-between gap-1'>
-                <div className='w-[20%]'>
+            <div className='flex justify-between gap-1 mt-5'>
+                <div className='w-fit'>
                     <NavBar getCoures={getCoures}></NavBar>
                 </div>
                 <div className='w-full'>

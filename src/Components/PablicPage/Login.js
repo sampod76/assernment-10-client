@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../ContexApi/ContexApi';
 import { Audio, Vortex } from 'react-loader-spinner'
 import { useForm } from "react-hook-form";
@@ -8,9 +8,13 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const { looding, singInEmailAndPassword, GoogleLogin, gitHubSing, } = useContext(AuthContex);
+    const location =useLocation()
+    const from =location.state?.from?.pathname || '/'
     const [error ,serError]=useState('')
 
     const navigate = useNavigate()
+
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     if (looding) {
         <>
@@ -29,7 +33,7 @@ const Login = () => {
 
     const handleGoogle = () => {
         GoogleLogin()
-        navigate('/')
+        navigate(from,{replace:true})
 
     }
 
@@ -37,7 +41,7 @@ const Login = () => {
 
     const handleGithub = () => {
         gitHubSing()
-        navigate('/')
+        navigate(from,{replace:true})
     }
 
 
@@ -46,7 +50,7 @@ const Login = () => {
         const { email, password } = data;
         serError('')
       
-console.log(data)
+
    
         singInEmailAndPassword(email, password)  
         .then(result => {
@@ -57,7 +61,7 @@ console.log(data)
                     'success'
                 )
                 reset()
-                navigate('/')
+                navigate(from,{replace:true})
               
                 
             })

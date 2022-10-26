@@ -1,8 +1,37 @@
-
-
-.homeBg{
+.homeBg {
     background-size: cover;
     background-repeat: no-repeat;
-    
+
     background-image: url('../Assets/image/h1.jpg');
+}
+
+.blurImg {
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: -20px 20px 20px #bebebe,
+        20px -20px 20px #ffffff;
+}
+
+.slide {
+    margin-top: 1vw;
+    margin-bottom: 1.5rem;
+    animation: 10s slide;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    color: transparent;
+    -webkit-text-stroke: 2px #273a1f;
+    font-size: 1vw;
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+    word-spacing: 0.3em;
+}
+
+
+@keyframes slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
