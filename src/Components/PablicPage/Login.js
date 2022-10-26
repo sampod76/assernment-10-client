@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContex } from '../ContexApi/ContexApi';
 
 const Login = () => {
+    const {}=useContext(AuthContex)
     return (
         <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 bg-slate-900 text-white mx-auto">
             <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
