@@ -12,6 +12,7 @@ const Register = () => {
     const { looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, updateProfileUser, setDefandency, registerEmailAndPasswore } = useContext(AuthContex)
 
     if (looding) {
+        <>
         <Vortex
             visible={true}
             height="80"
@@ -21,11 +22,12 @@ const Register = () => {
             wrapperClass="vortex-wrapper"
             colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
         />
+        <h1>Loading.......</h1></>
     }
 
 
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
-  
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const onSubmit = data => {
         const { username, url, email, password } = data;
         serError('')
@@ -35,7 +37,7 @@ const Register = () => {
             return
         }
 
-     
+
         registerEmailAndPasswore(email, password)
             .then(result => {
                 serError('')
@@ -52,7 +54,7 @@ const Register = () => {
                     .catch(error => {
                         console.error(error.message)
                     })
-                
+
                 setDefandency(result.user)
             })
             .catch(error => {
