@@ -11,7 +11,7 @@ import { router } from './Components/Route/Router';
 function App() {
  
   return (
-    <div  className="bg-slate-200">
+    <div  className="bg-slate-200 container mx-auto p-3">
       <RouterProvider router={router}>
 
       </RouterProvider>

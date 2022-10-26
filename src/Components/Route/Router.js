@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider,} from "react-router-dom";
 import Corse from "../PablicPage/Corse";
+import Corses from "../PablicPage/corses";
 import Error from "../PablicPage/Error";
 import Home from "../PablicPage/Home";
 import Login from "../PablicPage/Login";
@@ -27,13 +28,20 @@ export const router =createBrowserRouter([
                 element:<Corse></Corse>
             },
             {
+                path:'/corses',
+                loader: ()=>fetch('http://localhost:5000/allCorses'),
+                element:<Corses></Corses>
+
+            },
+            {
                 path:'/login',
                 element:<Login></Login>
             },
             {
                 path:'/register',
                 element:<Register></Register>
-            }
+            },
+            
         ]
     },
     {
