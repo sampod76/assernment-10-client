@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { createContext } from 'react';
 
-
-const ContexApi = () => {
+export const AuthContex = createContext()
+const ContexApi = ({ children }) => {
+    const sam ='sampod'
+    const authInfo={sam}
     return (
         <div>
-            
+            <AuthContex.Provider value={authInfo}>
+                {children}
+            </AuthContex.Provider>
         </div>
     );
 };

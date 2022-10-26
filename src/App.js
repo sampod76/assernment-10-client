@@ -8,11 +8,10 @@ import {
 import { router } from './Components/Route/Router';
 
 
-
 function App() {
  
   return (
-    <div className="">
+    <div  className="bg-slate-200">
       <RouterProvider router={router}>
 
       </RouterProvider>

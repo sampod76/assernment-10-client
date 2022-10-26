@@ -1,0 +1,8 @@
+
+
+.homeBg{
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    background-image: url('../Assets/image/h1.jpg');
+}
