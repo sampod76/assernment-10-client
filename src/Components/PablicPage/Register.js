@@ -5,11 +5,13 @@ import { IconName, FaGithub, FaGoogle } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import toast, { Toaster } from 'react-hot-toast';
 import { Audio, Vortex } from 'react-loader-spinner'
+import { useForm } from "react-hook-form";
 
 const Register = () => {
     const [error, serError] = useState('')
     const { looding, setLooding, GoogleLogin, gitHubSing } = useContext(AuthContex)
-
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
 
     if (looding) {
         <Vortex
@@ -55,10 +57,14 @@ const Register = () => {
     }
 
     
+
+
+
+    
     return (
         <section className=" text-white rounded-lg  dark:bg-gray-900 ">
             <div className="container flex  justify-center min-h-screen px-6 mx-auto">
-                <form className="w-[60%]  p-2 bg-slate-900 h-fit p-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="w-[60%]  p-2 bg-slate-900 h-fit p-5">
                     <img className="object-cover w-24 h-24 mx-auto rounded-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="user avatar" />
 
                     <div className="relative flex items-center mt-8">
@@ -68,7 +74,7 @@ const Register = () => {
                             </svg>
                         </span>
 
-                        <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Full Name" />
+                        <input type="text" {...register("username")} className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Full Name" />
                     </div>
 
 
@@ -81,7 +87,7 @@ const Register = () => {
                             </svg>
                         </span>
 
-                        <input type="url" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Photo Url" />
+                        <input type="url" {...register("url")}  className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Photo Url" />
                     </div>
                     <div className="relative flex items-center mt-6">
                         <span className="absolute">
@@ -90,7 +96,7 @@ const Register = () => {
                             </svg>
                         </span>
 
-                        <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
+                        <input type="email" {...register("email")}  className="block w-full py-3 text-gray-700 bg-white border rounded-md px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
                     </div>
 
                     <div className="relative flex items-center mt-4">
@@ -100,20 +106,20 @@ const Register = () => {
                             </svg>
                         </span>
 
-                        <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
+                        <input type="password" {...register("password")}  className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
                     </div>
 
 
 
                     <div className="mt-6">
-                        <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                        <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                             Sign Up
                         </button>
 
                         <div className="mt-6 text-center ">
-                            <a href="#" className="text-sm text-blue-500 hover:underline dark:text-blue-400">
+                            <Link to='/login' className="text-sm text-blue-500 hover:underline dark:text-blue-400">
                                 Already have an account?
-                            </a>
+                            </Link>
                         </div>
                         <div className='w-[20%] my-3 flex  justify-between gap-1 mx-auto '>
                             <Link onClick={handleGithub} ><FaGithub className='text-3xl'></FaGithub></Link>
