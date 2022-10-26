@@ -24,6 +24,7 @@ const Card = ({cor}) => {
             <h2 className="z-10 p-5">
                 <Link rel="noopener noreferrer" to={`/course/${id}`} className="font-medium text-md hover:underline dark:text-gray-100"> {title}</Link>
             </h2>
+           
         </div>
     );
 };

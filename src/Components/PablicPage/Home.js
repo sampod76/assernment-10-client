@@ -9,7 +9,7 @@ const Home = () => {
         <div className=''>
           
                 <h1 className='h1'>Here you will find the lowest cost to complete many programming language courses in the world</h1>
-         
+            
 
         </div>
     );
