@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../ContexApi/ContexApi';
 import { IconName, FaGithub, FaGoogle } from "react-icons/fa";
 import Swal from 'sweetalert2'
@@ -9,24 +9,27 @@ import { useForm } from "react-hook-form";
 
 const Register = () => {
     const [error, serError] = useState('')
+    const navigate = useNavigate()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, updateProfileUser, setDefandency, registerEmailAndPasswore } = useContext(AuthContex)
 
     if (looding) {
-        <>
-        <Vortex
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="vortex-loading"
-            wrapperStyle={{}}
-            wrapperClass="vortex-wrapper"
-            colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-        />
-        <h1>Loading.......</h1></>
+
+        return <>
+            <Vortex
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="vortex-loading"
+                wrapperStyle={{}}
+                wrapperClass="vortex-wrapper"
+                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+            />
+            <h1>Loading.......</h1></>
     }
 
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+   
 
     const onSubmit = data => {
         const { username, url, email, password } = data;
@@ -56,6 +59,7 @@ const Register = () => {
                     })
 
                 setDefandency(result.user)
+                navigate('/')
             })
             .catch(error => {
                 serError(error.message);
@@ -85,13 +89,16 @@ const Register = () => {
     }
 
     const handleGoogle = () => {
-        GoogleLogin().then(result => {
+        GoogleLogin()
+        .then(result => {
             serError('')
             Swal.fire(
                 'Successful sign in!',
                 'You clicked the button!',
                 'success'
             )
+
+            navigate('/')
         })
             .catch(error => {
                 serError(error.message);

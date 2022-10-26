@@ -1,27 +1,15 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../AllCss/allFile.css'
+
 import { AuthContex } from '../ContexApi/ContexApi';
 import { Audio, Vortex } from 'react-loader-spinner'
 
-
+import '../AllCss/allFile.css'
 const Header = () => {
     const navigat = useNavigate()
     const { user, logOut, looding } = useContext(AuthContex);
 
-    if (looding) {
-        <>
-            <Vortex
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="vortex-loading"
-                wrapperStyle={{}}
-                wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-            />
-            <h1>Loading.......</h1></>
-    }
+  
 
     const handleSingOut = () => {
         logOut()
@@ -31,21 +19,27 @@ const Header = () => {
 
 
     }
+
+
+    const handleProfile =()=>{
+        
+        navigat('/profile')
+        
+    }
     return (
-        <div className=' sticky top-1 blurImg'>
+        <div className='blurImg'>
             <header className="p-2 dark:bg-gray-800 dark:text-gray-100">
                 <div className="container flex justify-between h-16 mx-auto">
                     <Link rel="noopener noreferrer" to='/' aria-label="Back to homepage" className="flex items-center p-2">
                         <img className='w-[60%] rounded-full' src='https://thumbs2.imgbox.com/82/db/FLFQNGrC_t.jpg' alt="" />
                     </Link>
-                    <div>
-                        <h1 className='text-purple-900 slide '>
-                            Programing School
-                        </h1>
-                    </div>
+                    
                     <ul className="items-stretch hidden space-x-3 md:flex">
                         <li className="flex">
                             <Link rel="noopener noreferrer" to='/home' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Home</Link>
+                        </li>
+                        <li className="flex">
+                            <Link rel="noopener noreferrer" to='/quiz' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Quiz</Link>
                         </li>
                         <li className="flex">
                             <Link rel="noopener noreferrer" to='/corses' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Courses</Link>
@@ -54,7 +48,7 @@ const Header = () => {
                             user?.email ? <li className="flex">
                                 <>
                                     <Link onClick={handleSingOut} rel="noopener noreferrer" to='' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Sing Out</Link>
-                                    <Link onClick={handleSingOut} rel="noopener noreferrer" to='' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"><img src="" alt="" srcset="" /></Link>
+                                    <Link title={user.email} onClick={handleProfile} rel="noopener noreferrer" to='' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400">Profile</Link>
 
                                 </>
                             </li> : <>

@@ -8,16 +8,17 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const { looding, singInEmailAndPassword, GoogleLogin, gitHubSing, } = useContext(AuthContex);
-    const location =useLocation()
-    const from =location.state?.from?.pathname || '/'
-    const [error ,serError]=useState('')
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/'
+    const [error, serError] = useState('')
 
     const navigate = useNavigate()
 
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    
     if (looding) {
-        <>
+        return <>
             <Vortex
                 visible={true}
                 height="80"
@@ -32,8 +33,13 @@ const Login = () => {
 
 
     const handleGoogle = () => {
-        GoogleLogin()
-        navigate(from,{replace:true})
+        GoogleLogin().then(result=>{
+            navigate(from, { replace: true })
+        })
+        .catch(err=>{
+            serError(err.message)
+        })
+        
 
     }
 
@@ -41,19 +47,16 @@ const Login = () => {
 
     const handleGithub = () => {
         gitHubSing()
-        navigate(from,{replace:true})
+        navigate(from, { replace: true })
     }
 
 
 
     const onSubmit = data => {
-        const { email, password } = data;
+        const { email, password } = data
         serError('')
-      
-
-   
-        singInEmailAndPassword(email, password)  
-        .then(result => {
+        singInEmailAndPassword(email, password)
+            .then(result => {
                 serError('')
                 Swal.fire(
                     'Successful sign in',
@@ -61,16 +64,17 @@ const Login = () => {
                     'success'
                 )
                 reset()
-                navigate(from,{replace:true})
-              
-                
+                navigate(from, { replace: true })
+
+
             })
             .catch(error => {
                 serError(error.message);
                 toast.error("This didn't work.")
             })
+           
 
-    
+
 
     };
 
@@ -103,7 +107,7 @@ const Login = () => {
                 <p className="px-3 dark:text-gray-400">OR</p>
 
             </div>
-            <form  onSubmit={handleSubmit(onSubmit)} noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+            <form onSubmit={handleSubmit(onSubmit)} noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <label htmlFor="email" className="block text-sm">Email address</label>
@@ -114,11 +118,12 @@ const Login = () => {
                             <label htmlFor="password" className="text-sm">Password</label>
                             <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">Forgot password?</a>
                         </div>
-                        <input type="text" name="password" {...register("password")}  id="password" placeholder="*****" className="text-black w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                        <input type="password" name="password" {...register("password")} id="password" placeholder="*****" className="text-black w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>
                 </div>
                 <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">Sign in</button>
             </form>
+            <h1 className='text-red-700'>{error}</h1>
         </div>
     );
 };

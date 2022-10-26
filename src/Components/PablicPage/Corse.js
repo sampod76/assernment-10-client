@@ -1,18 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import { AuthContex } from '../ContexApi/ContexApi';
-import Swal from 'sweetalert2'
+
 
 const Corse = () => {
-  const navigat = useNavigate()
+
   const getCoures = useLoaderData()
   const { about, balance, company, id, name, picture, title, urlPdf
   } = getCoures;
   console.log(getCoures);
-
-
-
-
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="blurImg p-3 rounded-lg">

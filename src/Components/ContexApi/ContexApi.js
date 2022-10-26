@@ -58,7 +58,7 @@ const ContexApi = ({ children }) => {
             unSubscribe()
         }
 
-    }, [defandency])
+    }, [])
 
     console.log(user)
 
