@@ -45,7 +45,14 @@ const Register = () => {
                     'success'
                 )
                 reset()
-               
+                updateProfileUser(username, url)
+                    .then(result => {
+                        console.log(result.user)
+                    })
+                    .catch(error => {
+                        console.error(error.message)
+                    })
+                
                 setDefandency(result.user)
             })
             .catch(error => {
