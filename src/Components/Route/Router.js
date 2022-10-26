@@ -41,7 +41,11 @@ export const router =createBrowserRouter([
                 path:'/register',
                 element:<Register></Register>
             },
-            
+            {
+                path:'/course/:id',
+                loader: ({params})=>fetch(`http://localhost:5000/allCorses/${params.id}`),
+                element:<Corse> </Corse>
+            }
         ]
     },
     {
