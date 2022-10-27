@@ -226,7 +226,7 @@ const Login = () => {
                 serError(error.message);
                 toast.error("This didn't work.")
             })
-            .finally(setLooding(false))
+            // .finally(setLooding(false))
            
 
 
@@ -266,11 +266,11 @@ const Login = () => {
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <label htmlFor="email" className="block text-sm">Email address</label>
-                        <input type="email" name="email" id="email"  placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                        <input type="email" name="email" id="email"  placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md text-black  " />
                     </div>
                     <div className="space-y-2">
                         <div className="flex justify-between">
-                            <label htmlFor="password" className="text-sm">Password</label>
+                            <label htmlFor="password" className="text-sm text-black">Password</label>
                             <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">Forgot password?</a>
                         </div>
                         <input type="password" name="password"  id="password" placeholder="*****" className="text-black w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />

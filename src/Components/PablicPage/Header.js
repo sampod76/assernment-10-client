@@ -22,11 +22,10 @@ const Header = () => {
     }
 
 
-    const handleProfile = () => {
+    // const handleProfile = () => {
+    //     navigat('/profile')
 
-        navigat('/profile')
-
-    }
+    // }
     return (
         <div className='blurImg'>
             <header className="p-2 dark:bg-gray-800 dark:text-gray-100">
@@ -39,12 +38,12 @@ const Header = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/home' className={({ isActive }) =>
                                 isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
-                            }>Home</NavLink>
+                            }>Home/Bloge</NavLink>
                         </li>
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/quiz' className={({ isActive }) =>
                                 isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
-                            }>Quiz</NavLink>
+                            }>FAQ</NavLink>
                         </li>
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/corses' className={({ isActive }) =>
@@ -54,10 +53,10 @@ const Header = () => {
                         {
                             user?.email ? <li className="flex">
                                 <>
-                                    <NavLink onClick={handleSingOut} rel="noopener noreferrer" to='' className={({ isActive }) =>
+                                    <NavLink onClick={handleSingOut} rel="noopener noreferrer"  className={({ isActive }) =>
                                         isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
                                     }>Sing Out</NavLink>
-                                    <NavLink title={user.email} onClick={handleProfile} rel="noopener noreferrer" to='' className={({ isActive }) =>
+                                    <NavLink title={user.email} to='/profile' rel="noopener noreferrer" className={({ isActive }) =>
                                         isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
                                     }>Profile</NavLink>
 
