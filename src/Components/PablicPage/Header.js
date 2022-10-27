@@ -11,7 +11,6 @@ const Header = () => {
     const { user, logOut, looding ,mode, setMode} = useContext(AuthContex);
 
 
-    console.log(mode);
 
     const handleSingOut = () => {
         logOut()
@@ -78,7 +77,7 @@ const Header = () => {
                             </>
                         }
 
-                        <div className='flex justify-center items-center'>
+                        <div className='flex justify-center items-center border-2 border-slate-900 rounded-lg w-36'>
                             <DarkModeToggle
                                 mode={mode}
                                 dark="Dark"

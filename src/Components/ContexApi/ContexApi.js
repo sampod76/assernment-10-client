@@ -8,7 +8,7 @@ const ContexApi = ({ children }) => {
     const [user, setUser] = useState(null);
     const [looding, setLooding] = useState(true);
     const [defandency, setDefandency] = useState('')
-    const [mode, setMode] = useState('dark');
+    const [mode, setMode] = useState('light');
 
 
     const googleProvider = new GoogleAuthProvider();
