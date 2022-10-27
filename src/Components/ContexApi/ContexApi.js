@@ -8,6 +8,7 @@ const ContexApi = ({ children }) => {
     const [user, setUser] = useState(null);
     const [looding, setLooding] = useState(true);
     const [defandency, setDefandency] = useState('')
+    const [mode, setMode] = useState('dark');
 
 
     const googleProvider = new GoogleAuthProvider();
@@ -62,7 +63,7 @@ const ContexApi = ({ children }) => {
 
     console.log(user)
 
-    const authInfo = { user, looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, passwordReset, updateProfileUser, setDefandency, registerEmailAndPasswore ,logOut}
+    const authInfo = { user, looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, passwordReset, updateProfileUser, setDefandency, registerEmailAndPasswore ,logOut ,setMode,mode}
     return (
         <div>
             <AuthContex.Provider value={authInfo}>

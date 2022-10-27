@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { AuthContex } from '../ContexApi/ContexApi';
-import { Audio, Vortex } from 'react-loader-spinner'
+
+import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 
 import '../AllCss/allFile.css'
 const Header = () => {
     const navigat = useNavigate()
-    const { user, logOut, looding } = useContext(AuthContex);
+    const { user, logOut, looding ,mode, setMode} = useContext(AuthContex);
 
 
+    console.log(mode);
 
     const handleSingOut = () => {
         logOut()
@@ -76,6 +78,25 @@ const Header = () => {
                             </>
                         }
 
+                        <div className='flex justify-center items-center'>
+                            <DarkModeToggle
+                                mode={mode}
+                                dark="Dark"
+                                light="Light"
+                                size="sm"
+                                inactiveTrackColor="#e2e8f0"
+                                inactiveTrackColorOnHover="#f8fafc"
+                                inactiveTrackColorOnActive="#cbd5e1"
+                                activeTrackColor="#334155"
+                                activeTrackColorOnHover="#1e293b"
+                                activeTrackColorOnActive="#0f172a"
+                                inactiveThumbColor="#1e293b"
+                                activeThumbColor="#e2e8f0"
+                                onChange={(mode) => {
+                                    setMode(mode);
+                                }}
+                            />
+                        </div>
 
 
                     </ul>

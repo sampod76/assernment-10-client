@@ -11,7 +11,7 @@ const Register = () => {
     const [error, serError] = useState('')
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, updateProfileUser, setDefandency, registerEmailAndPasswore } = useContext(AuthContex)
+    const { looding,  GoogleLogin, gitHubSing, updateProfileUser, registerEmailAndPasswore } = useContext(AuthContex)
 
     if (looding) {
 
