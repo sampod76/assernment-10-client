@@ -7,7 +7,7 @@ const Corse = () => {
   const getCoures = useLoaderData()
   const { about, balance, company, id, name, picture, title, urlPdf
   } = getCoures;
-  console.log(getCoures);
+  // console.log(getCoures);
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="blurImg p-3 rounded-lg">

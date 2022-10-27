@@ -58,7 +58,7 @@ const Register = () => {
                         console.error(error.message)
                     })
 
-                setDefandency(result.user)
+                // setDefandency(result.user)
                 navigate('/')
             })
             .catch(error => {

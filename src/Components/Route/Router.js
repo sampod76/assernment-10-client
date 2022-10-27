@@ -14,17 +14,17 @@ import PrivetRouter from "./PrivetRouter";
 export const router =createBrowserRouter([
     {
         path:'/',
-        loader: ()=>fetch('http://localhost:5000/allCorses'),
+        loader: ()=>fetch('https://s-seven-omega.vercel.app/allCorses'),
         element:<Main></Main>,
         children:[
             {
                 path:'/',
-                loader: ()=>fetch('http://localhost:5000/allCorses'),
+                loader: ()=>fetch('https://s-seven-omega.vercel.app/allCorses'),
                 element:<Home></Home>
             },
             {
                 path:'/home',
-                loader: ()=>fetch('http://localhost:5000/allCorses'),
+                loader: ()=>fetch('https://s-seven-omega.vercel.app/allCorses'),
                 element:<Home></Home>
             },
             {
@@ -33,7 +33,7 @@ export const router =createBrowserRouter([
             },
             {
                 path:'/corses',
-                loader: ()=>fetch('http://localhost:5000/allCorses'),
+                loader: ()=>fetch('https://s-seven-omega.vercel.app/allCorses'),
                 element:<Corses></Corses>
 
             },
@@ -47,7 +47,7 @@ export const router =createBrowserRouter([
             },
             {
                 path:'/course/:id',
-                loader: ({params})=>fetch(`http://localhost:5000/allCorses/${params.id}`),
+                loader: ({params})=>fetch(`https://s-seven-omega.vercel.app/allCorses/${params.id}`),
                 element:<Corse> </Corse>
             },
             {

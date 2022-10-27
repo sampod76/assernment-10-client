@@ -54,7 +54,7 @@ const Login = () => {
 
     const onSubmit = data => {
         const { email, password } = data
-        serError('')
+    console.log(email,password)
         singInEmailAndPassword(email, password)
             .then(result => {
                 serError('')
