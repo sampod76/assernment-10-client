@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
-    const { looding, singInEmailAndPassword, GoogleLogin, gitHubSing,setLooding,user } = useContext(AuthContex);
+    const { looding, singInEmailAndPassword, GoogleLogin, gitHubSing,setLooding,user ,forgetPass} = useContext(AuthContex);
     // const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/'
@@ -17,6 +17,9 @@ const Login = () => {
 
     const navigate = useNavigate()
 
+    const  handlePasswordResit =()=>{
+        forgetPass()
+    }
 
   
 
@@ -61,13 +64,11 @@ const Login = () => {
                 )
                 form.reset()
               
-                console.log('first')
-
-
             })
             .catch(error => {
                 serError(error.message);
                 toast.error("This didn't work.")
+                // alert("This didn't work.")
             })
             // .finally(setLooding(false))
            
@@ -80,21 +81,9 @@ const Login = () => {
         if(user?.uid){
             navigate(from, { replace: true })
         }
-    },[user,from])
+    },[user,from,navigate])
       
-    if (looding) {
-        return <>
-            <Vortex
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="vortex-loading"
-                wrapperStyle={{}}
-                wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-            />
-            <h1>Loading.......</h1></>
-    }
+    
 
 
 
@@ -102,7 +91,7 @@ const Login = () => {
         <div className=" w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 bg-slate-900 text-white mx-auto">
             <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
             <p className="text-sm text-center dark:text-gray-400">Dont have account?
-                <a href="#" rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</a>
+                <Link  to='/register' rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</Link>
             </p>
             <div className="my-6 space-y-4">
                 <Link onClick={handleGoogle} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
@@ -133,7 +122,7 @@ const Login = () => {
                     <div className="space-y-2">
                         <div className="flex justify-between">
                             <label htmlFor="password" className="text-sm text-black">Password</label>
-                            <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">Forgot password?</a>
+                            <Link onClick={handlePasswordResit} rel="noopener noreferrer"  className="text-xs hover:underline dark:text-gray-400">Forgot password?</Link>
                         </div>
                         <input type="password" name="password"  id="password" placeholder="*****" className="text-black w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                     </div>

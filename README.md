@@ -6,6 +6,15 @@ https://github.com/programming-hero-web-course1/b610-learning-platform-client-si
 
 https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-sampod76
 
+vercel
+https://s-seven-omega.vercel.app/allCorses
+
+
 3) live server 
 
-https://darling-palmier-2b87af.netlify.app/
+https://assernment-10.web.app/
+
+
+
+live server 2 
+https://unique-otter-4ed4fc.netlify.app/

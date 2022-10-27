@@ -11,11 +11,11 @@ const Register = () => {
     const [error, serError] = useState('')
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { looding,  GoogleLogin, gitHubSing, updateProfileUser, registerEmailAndPasswore } = useContext(AuthContex)
+    const { looding, GoogleLogin, gitHubSing, updateProfileUser, registerEmailAndPasswore } = useContext(AuthContex)
 
     if (looding) {
 
-        return <>
+        return <div className='flex justify-center items-center w-fit'>
             <Vortex
                 visible={true}
                 height="80"
@@ -25,11 +25,11 @@ const Register = () => {
                 wrapperClass="vortex-wrapper"
                 colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
             />
-            <h1>Loading.......</h1></>
+            <h1>Loading.......</h1></div>
     }
 
 
-   
+
 
     const onSubmit = data => {
         const { username, url, email, password } = data;
@@ -90,16 +90,16 @@ const Register = () => {
 
     const handleGoogle = () => {
         GoogleLogin()
-        .then(result => {
-            serError('')
-            Swal.fire(
-                'Successful sign in!',
-                'You clicked the button!',
-                'success'
-            )
+            .then(result => {
+                serError('')
+                Swal.fire(
+                    'Successful sign in!',
+                    'You clicked the button!',
+                    'success'
+                )
 
-            navigate('/')
-        })
+                navigate('/')
+            })
             .catch(error => {
                 serError(error.message);
                 toast.error("This didn't work.")

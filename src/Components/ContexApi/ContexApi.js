@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
 import app from '../Firebase/Firebase.init.js';
 const auth = getAuth(app)
 export const AuthContex = createContext()
@@ -39,8 +39,13 @@ const ContexApi = ({ children }) => {
         })
     }
 
-    const passwordReset = (email) => {
-        return updatePassword(auth, email)
+    const passwordReset = (password) => {
+        return updatePassword(auth.currentUser, password)
+    }
+
+    const forgetPass =(email)=>{
+        setLooding(true)
+        return sendPasswordResetEmail(auth, email)
     }
 
     const logOut = () => {
@@ -63,7 +68,7 @@ const ContexApi = ({ children }) => {
 
     console.log(user)
 
-    const authInfo = { user, looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, passwordReset, updateProfileUser, setDefandency, registerEmailAndPasswore ,logOut ,setMode,mode}
+    const authInfo = { user, looding, setLooding, GoogleLogin, gitHubSing, singInEmailAndPassword, passwordReset, updateProfileUser, setDefandency, registerEmailAndPasswore ,logOut ,setMode,mode,forgetPass}
     return (
         <div>
             <AuthContex.Provider value={authInfo}>

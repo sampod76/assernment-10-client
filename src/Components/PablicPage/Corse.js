@@ -26,6 +26,7 @@ const Corse = () => {
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text>Name : {name} </Text>
+          <img src={picture} alt="" srcset="" />
           <Text>Company : {company} </Text>
           <Text>{title} </Text> 
           <Text>About: {about}</Text>
