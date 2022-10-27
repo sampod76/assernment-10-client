@@ -38,12 +38,12 @@ const Header = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/home' className={({ isActive }) =>
                                 isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
-                            }>Home/Bloge</NavLink>
+                            }>FAQ</NavLink>
                         </li>
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/quiz' className={({ isActive }) =>
                                 isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
-                            }>FAQ</NavLink>
+                            }>Home/Bloge</NavLink>
                         </li>
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/corses' className={({ isActive }) =>

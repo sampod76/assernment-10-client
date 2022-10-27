@@ -1,6 +1,6 @@
 
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../ContexApi/ContexApi';
 import { Audio, Vortex } from 'react-loader-spinner'
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
-    const { looding, singInEmailAndPassword, GoogleLogin, gitHubSing,setLooding } = useContext(AuthContex);
+    const { looding, singInEmailAndPassword, GoogleLogin, gitHubSing,setLooding,user } = useContext(AuthContex);
     // const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/'
@@ -18,20 +18,7 @@ const Login = () => {
     const navigate = useNavigate()
 
 
-    
-    if (looding) {
-        return <>
-            <Vortex
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="vortex-loading"
-                wrapperStyle={{}}
-                wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-            />
-            <h1>Loading.......</h1></>
-    }
+  
 
 
     const handleGoogle = () => {
@@ -73,7 +60,7 @@ const Login = () => {
                     'success'
                 )
                 form.reset()
-                navigate(from, { replace: true })
+              
                 console.log('first')
 
 
@@ -89,6 +76,25 @@ const Login = () => {
 
     };
 
+    useEffect(()=>{
+        if(user?.uid){
+            navigate(from, { replace: true })
+        }
+    },[user,from])
+      
+    if (looding) {
+        return <>
+            <Vortex
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="vortex-loading"
+                wrapperStyle={{}}
+                wrapperClass="vortex-wrapper"
+                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+            />
+            <h1>Loading.......</h1></>
+    }
 
 
 

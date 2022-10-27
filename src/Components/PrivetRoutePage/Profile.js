@@ -1,13 +1,24 @@
 import React, { useContext } from 'react';
 import { AuthContex } from '../ContexApi/ContexApi';
-
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 const Profile = () => {
    const {user,passwordReset,updateProfileUser}=useContext(AuthContex)
 //    console.log(user);
 
 const handlepasswordReset =()=>{
-    passwordReset()
-    alert("Please chack your email")
+    passwordReset().then(result=>{
+        Swal.fire({
+            title: 'Custom animation with Animate.css',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    })
+   
 }
 
     return (
@@ -48,7 +59,7 @@ const handlepasswordReset =()=>{
                     <input type="email" readOnly  defaultValue={user.email} className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800"  />
                 </label>
                 
-                <button type="button"  onClick={handlepasswordReset} className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 dark:bg-violet-400 dark:text-gray-900 focus:ring-violet-400 hover:ring-violet-400">Password Reser</button>
+                <Link type="button"  onClick={handlepasswordReset} className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 dark:bg-violet-400 dark:text-gray-900 focus:ring-violet-400 hover:ring-violet-400">Password Reser</Link>
             </form>
         </div>
     </section>
