@@ -62,7 +62,7 @@ export const router =createBrowserRouter([
             },
             {
                 path:'/quiz',
-                element:<PrivetRouter><Quiz></Quiz></PrivetRouter>
+                element:<Quiz></Quiz>
             }
         ]
     },
