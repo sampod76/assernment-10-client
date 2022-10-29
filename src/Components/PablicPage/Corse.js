@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet, } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',

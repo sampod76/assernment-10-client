@@ -51,14 +51,13 @@ const Header = () => {
                             }>Courses</NavLink>
                         </li>
                         {
-                            user?.email ? <li className="flex">
+                            user?.uid ? <li className="flex">
                                 <>
-                                    <NavLink onClick={handleSingOut} rel="noopener noreferrer"  className={({ isActive }) =>
+                                    <NavLink onClick={handleSingOut} rel="noopener noreferrer"  className= 'from-neutral-900 p-4 font-thin'
+                                    >SingOut</NavLink>
+                                    <NavLink title={user.displayName} to='/profile' rel="noopener noreferrer" className={({ isActive }) =>
                                         isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
-                                    }>Sing Out</NavLink>
-                                    <NavLink title={user.email} to='/profile' rel="noopener noreferrer" className={({ isActive }) =>
-                                        isActive ? 'underline decoration-sky-500 decoration-4 p-4 font-bold' : 'from-neutral-900 p-4 font-thin'
-                                    }>Profile</NavLink>
+                                    }>{user.photoURL? <img className='w-10 rounded-full' src={user.photoURL} alt="" srcset="" /> : <img className='w-10 rounded-full' src='https://i.ibb.co/j41h2KG/ppp.png'></img>}</NavLink>
 
                                 </>
                             </li> : <>

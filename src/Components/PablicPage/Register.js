@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../ContexApi/ContexApi';
 import { IconName, FaGithub, FaGoogle } from "react-icons/fa";
@@ -11,7 +11,7 @@ const Register = () => {
     const [error, serError] = useState('')
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { looding, GoogleLogin, gitHubSing, updateProfileUser, registerEmailAndPasswore } = useContext(AuthContex)
+    const { looding, GoogleLogin, gitHubSing, updateProfileUser, registerEmailAndPasswore, setDefandency ,user} = useContext(AuthContex)
 
     if (looding) {
 
@@ -58,7 +58,7 @@ const Register = () => {
                         console.error(error.message)
                     })
 
-                // setDefandency(result.user)
+                setDefandency(result.user)
                 navigate('/')
             })
             .catch(error => {
@@ -81,6 +81,7 @@ const Register = () => {
                     'You clicked the button!',
                     'success'
                 )
+                navigate('/')
             })
             .catch(error => {
                 serError(error.message);
@@ -106,9 +107,7 @@ const Register = () => {
             })
     }
 
-
-
-
+    
 
 
     return (
